@@ -4,7 +4,10 @@ module.exports = {
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'scss',
-      patterns: [path.resolve(__dirname, './src/assets/public/css/_func.scss')],
+      patterns: [
+        path.resolve(__dirname, './src/assets/css/variables.scss'),
+        path.resolve(__dirname, './src/assets/css/functions.scss'),
+      ],
     },
   },
 }
