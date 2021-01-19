@@ -1,29 +1,21 @@
 import axios from 'axios'
 import { requestBaseUrl } from '@/config'
+import loadingManage from './loadingManage'
 
 axios.defaults.baseURL = requestBaseUrl
 
 export default {
   install(Vue) {
-    Vue.prototype.$requestLoadingNum = 0
     Vue.prototype.$request = function () {
       let _this = this
       let _arguments = arguments
-      this.$requestLoadingNum++
-      let loading = this.$loading({
-        lock: true,
-        text: 'Loading',
-        spinner: 'el-icon-loading',
-        background: 'rgba(0, 0, 0, 0.7)',
-      })
+      const requestEnd = loadingManage.apply(_this, _arguments)
 
       return new Promise(function (resolve, reject) {
         axios.apply(this, _arguments).then(
           function () {
             resolve.apply(_this, arguments)
-            if (--_this.$requestLoadingNum <= 0) {
-              loading.close()
-            }
+            requestEnd()
           },
           function () {
             /* let res = error.response
@@ -31,9 +23,7 @@ export default {
             _this.$router && _this.$router.push('/login')
           } */
             reject.apply(_this, arguments)
-            if (--_this.$requestLoadingNum <= 0) {
-              loading.close()
-            }
+            requestEnd()
           },
         )
       })
