@@ -49,6 +49,12 @@ yarn lint
         + 文件模式 - 用于一个页面，只有一个vue文件
         + 文件夹模式 - 用于一个页面，有多个vue文件，且其他文件不适合放到公共组件中（文件夹下，index.vue作为页面入口）
 
+### 开发流程
+
++ 编辑器开启eslint、prettier插件 - TODO
++ 分支管理 - TODO
++ 提交代码会自动执行gitHooks代码检查（commit后面添加--no-verify可跳过此环节，不推荐）
+
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
