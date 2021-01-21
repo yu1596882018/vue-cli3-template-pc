@@ -19,13 +19,15 @@ export default {
     HelloWorld,
   },
   created() {
-    this.$request({
-      url: '/hsbc/institution/selectInstitution',
-      method: 'get',
-      params: { instId: 1 },
-    }).then(function () {
-      console.log('request', arguments)
-    })
+    this.$services.querySystemDetails(1).then(
+      () => {
+        console.log(this)
+        console.log('request', arguments)
+      },
+      () => {
+        console.log(this)
+      },
+    )
   },
 }
 </script>

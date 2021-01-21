@@ -53,6 +53,7 @@ yarn lint
 
 + 编辑器开启eslint、prettier插件 - TODO
 + 分支管理 - TODO
++ 数据Mock - TODO
 + 提交代码会自动执行gitHooks代码检查（commit后面添加--no-verify可跳过此环节，不推荐）
 
 ### Customize configuration
