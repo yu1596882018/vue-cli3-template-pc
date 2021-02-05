@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "prettier": "prettier --ignore-path .gitignore --write ."
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -52,9 +53,16 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "prettier/prettier": "error",
+      "prettier/prettier": [
+        "error",
+        {
+          "endOfLine": "auto"
+        }
+      ],
       "vue/no-unused-vars": "warn",
-      "no-unused-vars": "warn"
+      "no-unused-vars": "warn",
+      "no-useless-escape": "warn",
+      "no-debugger": "warn"
     },
     "plugins": [
       "prettier"
@@ -65,6 +73,7 @@
   },
   "lint-staged": {
     "*.{js,vue}": [
+      "prettier --write",
       "vue-cli-service lint",
       "git add"
     ]
