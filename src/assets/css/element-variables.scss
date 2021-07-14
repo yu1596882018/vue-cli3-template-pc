@@ -1,0 +1,19 @@
+/* 改变主题色变量 */
+$--color-primary: #DB0011;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";
+
+// 解决element-ui 的el-cascader多选在IE中样式不正常
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .el-cascader__tags > span {
+    flex: auto;
+  }
+
+  i.el-cascader-node__postfix {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
