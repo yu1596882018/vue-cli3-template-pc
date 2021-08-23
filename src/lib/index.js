@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import EventBus from './eventBus'
+import './monitorConfigure'
+import EventBus from '@yu1596882018/web-sdk/es/lib/eventBus'
 import request from './request'
 
 Vue.use(EventBus)

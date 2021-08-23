@@ -1,15 +1,33 @@
 import axios from 'axios'
 import { requestBaseUrl } from '@/config'
-import loadingManage from './loadingManage'
+import loadingManage from '@yu1596882018/web-sdk/es/lib/loadingManage'
 
 axios.defaults.baseURL = requestBaseUrl
 
 export default {
   install(Vue) {
-    Vue.prototype.$request = function () {
+    let loading = null
+
+    Vue.prototype.$request = function (options) {
       let _this = this
       let _arguments = arguments
-      const requestEnd = loadingManage.apply(_this, _arguments)
+      const requestEnd = loadingManage({
+        ...(options && typeof options === 'object' ? options : {}),
+        showLoading: () => {
+          if (!loading) {
+            loading = Vue.prototype.$loading({
+              lock: true,
+              text: 'Loading',
+              spinner: 'el-icon-loading',
+              background: 'rgba(0, 0, 0, 0.7)',
+            })
+          }
+        },
+        hideLoading() {
+          loading.close()
+          loading = null
+        },
+      })
 
       return new Promise(function (resolve, reject) {
         axios.apply(this, _arguments).then(
