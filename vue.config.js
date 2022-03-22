@@ -10,4 +10,10 @@ module.exports = {
       ],
     },
   },
+
+  lintOnSave: true,
+
+  css: {
+    sourceMap: true,
+  },
 }
