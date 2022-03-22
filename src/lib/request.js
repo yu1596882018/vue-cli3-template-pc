@@ -2,7 +2,9 @@ import axios from 'axios'
 import { requestBaseUrl } from '@/config'
 import loadingManage from '@yu1596882018/web-sdk/es/lib/loadingManage'
 
-axios.defaults.baseURL = requestBaseUrl
+const request = axios.create({
+  baseURL: requestBaseUrl,
+})
 
 export default {
   install(Vue) {
@@ -30,7 +32,7 @@ export default {
       })
 
       return new Promise(function (resolve, reject) {
-        axios.apply(this, _arguments).then(
+        request.apply(this, _arguments).then(
           function () {
             resolve.apply(_this, arguments)
             requestEnd()
@@ -48,7 +50,7 @@ export default {
     }
 
     // 添加请求拦截器
-    axios.interceptors.request.use(
+    request.interceptors.request.use(
       function (config) {
         localStorage.getItem('token') && (config.headers.Authorization = 'JWT ' + localStorage.getItem('token'))
         return config
@@ -59,7 +61,7 @@ export default {
     )
 
     // 添加响应拦截器
-    axios.interceptors.response.use(
+    request.interceptors.response.use(
       function (response) {
         return response
       },
