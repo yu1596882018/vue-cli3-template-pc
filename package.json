@@ -9,7 +9,7 @@
     "prettier": "prettier --write **/*.{js,vue}"
   },
   "dependencies": {
-    "@yu1596882018/web-sdk": "1.0.6",
+    "@yu1596882018/web-sdk": "~1.0.14",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "element-ui": "^2.14.1",
