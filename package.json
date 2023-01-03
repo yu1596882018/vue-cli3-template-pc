@@ -88,6 +88,10 @@
     "not dead",
     "IE 11"
   ],
+  "engines": {
+    "node": ">=12.13.0",
+    "npm": ">=6.12.0"
+  },
   "postcss": {
     "plugins": {
       "autoprefixer": {},
