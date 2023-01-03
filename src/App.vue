@@ -10,6 +10,10 @@
 </template>
 
 <style lang="scss">
+//初始化浏览器样式
+@import '~@yu1596882018/web-sdk/es/style/resetPc';
+
+// 全局样式
 @import 'assets/css/mixins';
 
 #app {
