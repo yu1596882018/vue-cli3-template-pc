@@ -26,7 +26,7 @@ export default {
           }
         },
         hideLoading() {
-          loading.close()
+          loading?.close()
           loading = null
         },
       })
